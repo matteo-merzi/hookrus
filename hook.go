@@ -32,6 +32,11 @@ func (h Hook) Fire(e *logrus.Entry) error {
 	return err
 }
 
+// Levels returns all logrus levels.
+func (h Hook) Levels() []logrus.Level {
+	return logrus.AllLevels
+}
+
 func (hook Hook) format(entry *logrus.Entry) (string, error) {
 	serialized, err := hook.formatter.Format(entry)
 	if err != nil {
